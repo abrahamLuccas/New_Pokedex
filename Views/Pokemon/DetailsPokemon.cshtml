@@ -1,0 +1,138 @@
+﻿    @model Poke.Models.PokeM
+@{
+    ViewData["Title"] = "DetailsPokemon";
+}
+<h1> Details Pokémon</h1>
+<hr />
+<div class="card" style="display:flex; flex-direction: row">
+    <div class="card-body">
+        <div class="card-title" style="text-align:center;">Pokémon</div>
+        <hr />
+        <div class="col-md-12" style="margin-top:10px">
+                        @{
+                            try
+                            {
+                                var base64 = Convert.ToBase64String(Model.PictureP);
+                                if(!string.IsNullOrEmpty(base64))
+                                {
+                                    var Img = String.Format("data:image/png;base64,{0}", base64);
+                                    <img class="img-fluid" src="@Img" width="300" style="margin-left:10px" />
+                                }
+                            }
+                            catch
+                            {
+                                <img class="img-fluid" src="http://www.puspfc.usp.br/sistemas/prefeitura/imgs/sem_foto.png" width="150" style="margin-top:15px"/>
+                            }
+                        }
+                            
+                <div class="col-md-4" style="margin-left:85px; margin-top: 10px;">
+                <label asp-for="GenderP" class="control-label"></label>
+                <input asp-for="GenderP" class="form-control" readonly />
+                <span asp-validation-for="GenderP" class="text-danger"></span>
+            </div>
+            </div>
+    </div>
+     <div class="card-body" >
+        <div class="card-title" style="text-align:center;">Statistics</div>
+        <hr />
+            <div class="col-md-6" style="margin-left:80px;">
+                <label asp-for="PokeN" class="control-label"></label>
+                <input asp-for="PokeN" class="form-control" readonly/>
+                <span asp-validation-for="PokeN" class="text-danger"></span>
+            </div>
+            <div class="col-md-3" style="margin-left:80px;">
+                <label asp-for="TypeP" class="control-label"></label>
+                <input asp-for="TypeP" class="form-control" readonly/>
+                <span asp-validation-for="TypeP" class="text-danger"></span>
+            </div>
+              <div class="col-md-3" style="margin-left:80px;">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control"readonly />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+            <div class="col-md-3" style="margin-left:80px;">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" readonly/>
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="col-md-6" style="margin-left:80px;">
+                <label asp-for="Ability" class="control-label"></label>
+                <input asp-for="Ability" class="form-control" readonly/>
+                <span asp-validation-for="Ability" class="text-danger"></span>
+            </div>
+    </div>
+
+<div class="card-body">
+    <div class="card-title" style="text-align: center;">Base Stats</div>
+            <hr />
+            <div class="col-md-3" style="margin-left:120px;">
+                <label asp-for="HP" class="control-label"></label>
+                <input asp-for="HP" class="form-control" readonly/>
+                <span asp-validation-for="HP" class="text-danger"></span>
+            </div>
+             <div class="col-md-3" style="margin-left:120px;">
+                <label asp-for="Atk" class="control-label"></label>
+                <input asp-for="Atk" class="form-control" readonly/>
+                <span asp-validation-for="Atk" class="text-danger"></span>
+            </div>
+            <div class="col-md-3" style="margin-left:120px;"> 
+                <label asp-for="Def" class="control-label"></label>
+                <input asp-for="Def" class="form-control" readonly/>
+                <span asp-validation-for="Def" class="text-danger"></span>
+            </div>
+            <div class="col-md-3" style="margin-left:120px;">
+                <label asp-for="SpDef" class="control-label"></label>
+                <input asp-for="SpDef" class="form-control" readonly />
+                <span asp-validation-for="Def" class="text-danger"></span>
+            </div>
+            <div class="col-md-3" style="margin-left:120px;">
+                <label asp-for="SpAtk" class="control-label"></label>
+                <input asp-for="SpAtk" class="form-control" readonly />
+                <span asp-validation-for="SpAtk" class="text-danger"></span>
+            </div>
+            <div class="col-md-3" style="margin-left:120px;">
+                <label asp-for="SpDef" class="control-label"></label>
+                <input asp-for="SpDef" class="form-control" readonly/>
+                <span asp-validation-for="SpDef" class="text-danger"></span>
+            </div>
+            <div class="col-md-3" style="margin-left:120px;">
+                <label asp-for="Speed" class="control-label"></label>
+                <input asp-for="Speed" class="form-control" readonly/>
+                <span asp-validation-for="Speed" class="text-danger"></span>
+            </div>
+</div>
+</div>
+             
+            <div class="form-group" style="margin-top:15px">
+                <button type="button"  class="btn btn-info"><a class="bi bi-arrow-left-circle-fill" asp-action="Home1">  Back</a></button>
+            </div>
+
+    <style>
+
+header.header{
+    background-color: rgb(238, 9, 49);
+}
+ h1, h6, a, input, label, h3
+{
+    font-family: PoKeSolid;
+    color: rgb(19, 17, 18);
+}
+
+.card-body{
+    background-color: rgb(119, 186, 153);
+    border-radius: 40px;
+    width: 50%;
+    border:1px solid black;
+   
+}
+
+.card{
+    border-radius: 100px;
+    background-color:rgb(179, 0, 27);
+    
+    
+}
+
+
+</style>
+

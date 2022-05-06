@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Poke.Models.PokeM>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Welcome Back Trainer!</h1>
+<p>
+    <h5><a asp-action="CreateP">Add a new Pokemon !</a></h5>
+    <h5><a asp-action="Create">Register your ID !</a></h5>
+</p>
+
+
+
+<style>
+
+body{
+    background-color: rgb(179, 0, 27);
+}
+
+header.header{
+    background-color: rgb(238, 9, 49);
+}
+
+aside.sidebar{
+   background-color: rgb(79, 178, 134);
+}
+
+a.nav-item{
+    background-color: rgb(72, 171, 9);
+}
+
+h5{
+    font-family: PoKeSolid;
+    color: black;
+}
+
+img{
+   
+    height: auto;
+    max-height: 200px;
+    max-width: 200px;
+    
+}
+
+</style>
+
+
+<!-- Row cards top image-->  
+<div class="row d-flex">
+                    @foreach(var item in Model)
+                    {
+
+    <div class="col-md-3" style="display:flex; flex-direction: row;">
+        <div class="card" >
+            <!-- img src="~/assets/img/pkgr.png" class="card-img-top" alt="..." --> 
+            <div class="card-body" style="margin-top:10px;">
+                
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(@item.PictureP);
+                            if(!string.IsNullOrEmpty(base64))
+                            {
+                                var img = String.Format("data:image/png;base64,{0}", base64);
+                                <img class="img" src="@img" style="margin-left: 10%;" />
+                            }
+                          
+                        }
+                        catch
+                        {
+                            <img class="img-fluid" src="http://www.puspfc.usp.br/sistemas/prefeitura/imgs/sem_foto.png"  />
+                        }
+                               <h5> Name: @item.PokeN </h5>                                                           
+                    <button type="button" class="btn btn-info"><a  asp-action="DetailsPokemon" asp-route-id="@item.IdP" class="bi bi-info-circle"> Details</a></button>
+                    <button type="button" class="btn btn-danger"><a asp-action="DeletePokemon" asp-route-id="@item.IdP" class="bi bi-exclamation-octagon"> Delete</a></button>
+                    <button type="button" class="btn btn-warning" style="margin-top: 10px"><a asp-action="EditPokemon" asp-route-id="@item.IdP" class="bi bi-exclamation-triangle"> Edit</a></button>
+                    
+            </div>
+        </div>
+    </div>
+
+                       }
+</div>

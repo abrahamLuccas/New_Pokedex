@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Poke.Models.TrainerM>
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1>Trainer Card</h1>
+<hr />
+
+    @foreach(var i in Model)
+    {
+    <main id="main" class="main">    
+
+        @if(i.Gender == "M")
+        {
+    <section class="section profile">
+
+          <div class="card" style="display:flex; flex-direction: row">
+            <div class="card-body profile-card d-flex flex-column align-items-center">
+
+              <img src="~/assets/img/rei1.png" alt="Profile">
+              <h2> Trainer @i.Name </h2>                        
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered border-dark" style="margin-top:80px"> 
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Hometown</th>
+                    <th scope="col">Region</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-primary">                 
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Hometown)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Region)
+                    </td>
+                  </tr>                  
+                </tbody>
+              </table>
+                    <button type="button" class="btn btn-danger"><a asp-action="DeleteTrainer" asp-route-id="@i.IdT" class="bi bi-exclamation-octagon"> Delete</a></button>
+                    <button type="button" class="btn btn-warning" ><a asp-action="EditTrainers" asp-route-id="@i.IdT" class="bi bi-exclamation-triangle"> Edit</a></button>
+            </div>
+
+              
+         </div>      
+    </section>
+    }
+    else{
+
+         <section class="section profile">
+
+          <div class="card" style="display:flex; flex-direction: row">
+            <div class="card-body profile-card d-flex flex-column align-items-center">
+
+              <img src="~/assets/img/akari.png" alt="Profile">
+              <h2> Trainer @i.Name </h2>                        
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered border-dark" style="margin-top:80px"> 
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Hometown</th>
+                    <th scope="col">Region</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-primary">                 
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Hometown)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.Region)
+                    </td>
+                  </tr>                  
+                </tbody>
+              </table>
+                    <button type="button" class="btn btn-danger"><a asp-action="DeleteTrainer" asp-route-id="@i.IdT" class="bi bi-exclamation-octagon"> Delete</a></button>
+                    <button type="button" class="btn btn-warning" ><a asp-action="EditTrainers" asp-route-id="@i.IdT" class="bi bi-exclamation-triangle"> Edit</a></button>
+            </div>
+
+              
+         </div>      
+    </section>
+    }
+</main>
+            }
+
+   <style>
+
+header.header{
+    background-color: rgb(238, 9, 49);
+}
+ h1, h6, a, input, label, h3
+{
+    font-family: PoKeSolid;
+    color: rgb(19, 17, 18);
+}
+
+</style>
